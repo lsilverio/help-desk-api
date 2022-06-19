@@ -1,22 +1,20 @@
-package br.com.lstecnologia.helpdesk.enums;
+package br.com.lstecnologia.helpdesk.domain.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 import java.util.stream.Stream;
 
-public enum PerfilEnum {
+public enum StatusChamadoEnum {
 
-    ADMIN(0, "ROLE_ADMIN"),
-    CLIENTE(1, "ROLE_CLIENTE"),
-    TECNICO(2, "ROLE_TECNICO");
+    ABERTO(0, "ABERTO"),
+    ANDAMENTO(1, "ANDAMENTO"),
+    ENCERRADO(2, "ENCERRADO");
 
     private Integer codigo;
     private String descricao;
 
-    PerfilEnum(Integer codigo, String descricao) {
+    StatusChamadoEnum(Integer codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -32,11 +30,11 @@ public enum PerfilEnum {
     }
 
     @JsonCreator
-    public static PerfilEnum decode(final Integer codigo) {
-        return Stream.of(PerfilEnum.values())
+    public static StatusChamadoEnum decode(final Integer codigo) {
+        return Stream.of(StatusChamadoEnum.values())
                 .filter(targetEnum -> targetEnum.codigo.equals(codigo))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Perfil inválido"));
+                .orElseThrow(() -> new IllegalArgumentException("Status chamado inválido"));
     }
 
 }

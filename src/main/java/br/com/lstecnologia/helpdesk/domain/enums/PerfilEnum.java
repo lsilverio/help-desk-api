@@ -1,20 +1,20 @@
-package br.com.lstecnologia.helpdesk.enums;
+package br.com.lstecnologia.helpdesk.domain.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.stream.Stream;
 
-public enum PrioridadeChamadoEnum {
+public enum PerfilEnum {
 
-    BAIXA(0, "BAIXA"),
-    MEDIA(1, "MEDIA"),
-    ALTA(2, "ALTA");
+    ADMIN(0, "ROLE_ADMIN"),
+    CLIENTE(1, "ROLE_CLIENTE"),
+    TECNICO(2, "ROLE_TECNICO");
 
     private Integer codigo;
     private String descricao;
 
-    PrioridadeChamadoEnum(Integer codigo, String descricao) {
+    PerfilEnum(Integer codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -30,11 +30,11 @@ public enum PrioridadeChamadoEnum {
     }
 
     @JsonCreator
-    public static PrioridadeChamadoEnum decode(final Integer codigo) {
-        return Stream.of(PrioridadeChamadoEnum.values())
+    public static PerfilEnum toEnum(final Integer codigo) {
+        return Stream.of(PerfilEnum.values())
                 .filter(targetEnum -> targetEnum.codigo.equals(codigo))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Prioridade chamado inválida"));
+                .orElseThrow(() -> new IllegalArgumentException("Perfil inválido"));
     }
 
 }
