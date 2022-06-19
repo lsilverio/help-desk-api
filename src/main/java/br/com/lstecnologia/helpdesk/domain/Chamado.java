@@ -1,15 +1,29 @@
 package br.com.lstecnologia.helpdesk.domain;
 
-import br.com.lstecnologia.helpdesk.domain.enums.PrioridadeChamadoEnum;
-import br.com.lstecnologia.helpdesk.domain.enums.StatusChamadoEnum;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.ManyToAny;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import br.com.lstecnologia.helpdesk.domain.enums.PrioridadeChamadoEnum;
+import br.com.lstecnologia.helpdesk.domain.enums.StatusChamadoEnum;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
